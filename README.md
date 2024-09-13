@@ -1,5 +1,7 @@
 # carbonsync-app
 Mobile App Development Final Project
 
-Ini branch atan
-Muhammad Luthfan Arrayyan 21/479825/TK/52943
+Anggota: 
+1. Baihaqi
+2. Atan
+3. Bayu
