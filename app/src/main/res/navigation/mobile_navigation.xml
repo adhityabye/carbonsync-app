@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="io.apaaja.carbonsync.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -27,4 +31,14 @@
         android:id="@+id/navigation_settings"
         android:name="io.apaaja.carbonsync.ui.settings.SettingsFragment"
         android:label="@string/title_settings" />
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="io.apaaja.carbonsync.ui.community.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="io.apaaja.carbonsync.ui.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
 </navigation>

@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import io.apaaja.carbonsync.R
 import io.apaaja.carbonsync.databinding.FragmentHomeBinding
 
@@ -26,15 +27,17 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+            ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        // listen to changes in carbon value
+        homeViewModel.carbonReduction.observe(viewLifecycleOwner, getCarbonReductionValueObserver())
+
+        // make it clickable
+        binding.layoutCarbonViewTop.setOnClickListener(getCarbonReductionLayoutOnClickListener())
+
         return root
     }
 
@@ -42,4 +45,17 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun getCarbonReductionValueObserver(): Observer<Float> {
+        return Observer<Float> {
+            binding.textviewCarbonViewCenter.text = String.format("%.1fg", it)
+        }
+    }
+
+    private fun getCarbonReductionLayoutOnClickListener(): View.OnClickListener {
+        return View.OnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_historyFragment)
+        }
+    }
+
 }

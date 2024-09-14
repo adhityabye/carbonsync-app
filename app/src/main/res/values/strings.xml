@@ -3,9 +3,18 @@
 
     <!-- Navigation Titles -->
     <string name="title_home">Home</string>
+    <string name="title_add_activity">Add Activity</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_settings">Settings</string>
+
+    <!-- Home Fragment -->
+    <string name="home_carbon_view_top">You\'ve reduced</string>
+    <string name="home_carbon_view_bottom">of carbon emission</string>
+
+    <!-- History Fragment -->
+    <string name="title_history">History</string>
+    <string name="history_carbon_view_top">Today\' carbon emission reduction</string>
 
     <!-- Preference Titles -->
     <string name="general_header">General</string>
