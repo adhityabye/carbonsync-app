@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -54,7 +53,7 @@ class HomeFragment : Fragment() {
 
     private fun getCarbonReductionLayoutOnClickListener(): View.OnClickListener {
         return View.OnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_historyFragment)
+            findNavController().navigate(R.id.action_navigation_home_to_fragment_history)
         }
     }
 

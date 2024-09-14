@@ -47,7 +47,13 @@ class HistoryFragment : Fragment() {
             HistoryItem(LocalDate.now().minusDays(1), 10.3f),
             HistoryItem(LocalDate.now().minusDays(2), 7.8f)
         )
-        historyAdapter = HistoryItemAdapter(historyList)
+        historyAdapter = HistoryItemAdapter(historyList) { item ->
+            val action = HistoryFragmentDirections.actionFragmentHistoryToFragmentHistoryDetails(
+                date = HistoryItemAdapter.parseHistoryItemDate(item.date),
+                value = item.value
+            )
+            findNavController().navigate(action)
+        }
 
         recyclerView.adapter = historyAdapter
     }
@@ -80,7 +86,6 @@ class HistoryFragment : Fragment() {
     }
 
     private fun navigateBack() {
-        // Navigate back to the previous fragment or finish the activity
         findNavController().popBackStack()
     }
 

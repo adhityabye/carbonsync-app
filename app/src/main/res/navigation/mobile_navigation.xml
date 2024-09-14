@@ -11,7 +11,7 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_historyFragment"
+            android:id="@+id/action_navigation_home_to_fragment_history"
             app:destination="@id/fragment_history" />
     </fragment>
 
@@ -40,5 +40,21 @@
         android:id="@+id/fragment_history"
         android:name="io.apaaja.carbonsync.ui.history.HistoryFragment"
         android:label="@string/title_history"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_fragment_history_to_fragment_history_details"
+            app:destination="@id/fragment_history_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_history_details"
+        android:name="io.apaaja.carbonsync.ui.historydetails.HistoryDetailsFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history_details">
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="value"
+            app:argType="float" />
+    </fragment>
 </navigation>
