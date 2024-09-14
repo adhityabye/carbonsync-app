@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_home_to_historyFragment"
-            app:destination="@id/historyFragment" />
+            app:destination="@id/fragment_history" />
     </fragment>
 
     <fragment
@@ -37,8 +37,8 @@
         android:label="fragment_community"
         tools:layout="@layout/fragment_community" />
     <fragment
-        android:id="@+id/historyFragment"
+        android:id="@+id/fragment_history"
         android:name="io.apaaja.carbonsync.ui.history.HistoryFragment"
-        android:label="fragment_history"
+        android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 </navigation>

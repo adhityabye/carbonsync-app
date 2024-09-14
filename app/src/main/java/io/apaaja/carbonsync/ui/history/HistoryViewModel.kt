@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import java.time.LocalDate
 
 class HistoryViewModel : ViewModel() {
+    private val _currentCarbonReduction = MutableLiveData(0.0f);
     private val _historyData = MutableLiveData<List<HistoryItem>>()
+    val currentCarbonReduction: LiveData<Float> = _currentCarbonReduction
     val historyData: LiveData<List<HistoryItem>> = _historyData
 
     init {
