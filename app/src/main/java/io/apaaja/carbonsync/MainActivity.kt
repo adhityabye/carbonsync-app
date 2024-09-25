@@ -14,9 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import io.apaaja.carbonsync.databinding.ActivityMainBinding
 import android.content.Intent
-
-
-
+import androidx.navigation.NavController
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,7 +39,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        bottomNavItemChangeListener(navView, navController)
+    }
 
+    override fun onStart() {
+        super.onStart()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
@@ -62,6 +64,14 @@ class MainActivity : AppCompatActivity() {
             "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        }
+    }
+
+    private fun bottomNavItemChangeListener(navView: BottomNavigationView, navController: NavController) {
+        navView.setOnItemSelectedListener { item ->
+            navController.popBackStack(item.itemId, inclusive = true, saveState = false)
+            navController.navigate(item.itemId)
+            true
         }
     }
 

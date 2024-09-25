@@ -80,11 +80,6 @@ class HistoryFragment : Fragment() {
         })
     }
 
-    override fun onPause() {
-        super.onPause()
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-    }
-
     private fun navigateBack() {
         findNavController().popBackStack()
     }

@@ -45,18 +45,11 @@ class HistoryDetailsFragment : Fragment() {
             binding.textviewCarbonViewTop.text = date
             binding.textviewCarbonViewCenter.text = String.format("%.1fg", value)
         }
-
-//        setHasOptionsMenu(true)
     }
 
     override fun onResume() {
         super.onResume()
         (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onDestroyView() {

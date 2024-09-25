@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -39,6 +40,11 @@ class HomeFragment : Fragment() {
         // make it clickable
         binding.layoutCarbonViewTop.setOnClickListener(getCarbonReductionLayoutOnClickListener())
         binding.communityButton.setOnClickListener(View.OnClickListener { (activity as MainActivity).openCommunityActivity(requireView()); })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as? AppCompatActivity)?.supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onDestroyView() {
