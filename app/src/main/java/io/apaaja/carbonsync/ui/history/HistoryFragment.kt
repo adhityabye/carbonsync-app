@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.apaaja.carbonsync.MainActivity
 import io.apaaja.carbonsync.R
+import io.apaaja.carbonsync.viewmodel.CarbonDataViewModel
 import java.time.LocalDate
 import java.util.*
 
@@ -23,7 +24,7 @@ class HistoryFragment : Fragment() {
         fun newInstance() = HistoryFragment()
     }
 
-    private lateinit var viewModel: HistoryViewModel
+    private lateinit var carbonDataViewModel: CarbonDataViewModel
     private lateinit var historyAdapter: HistoryItemAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var currentCarbonReductionTextView: TextView
@@ -42,15 +43,10 @@ class HistoryFragment : Fragment() {
         recyclerView = view.findViewById(R.id.history_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val historyList = arrayListOf(
-            HistoryItem(LocalDate.now(), 5.5f),
-            HistoryItem(LocalDate.now().minusDays(1), 10.3f),
-            HistoryItem(LocalDate.now().minusDays(2), 7.8f)
-        )
-        historyAdapter = HistoryItemAdapter(historyList) { item ->
+        historyAdapter = HistoryItemAdapter() { item ->
             val action = HistoryFragmentDirections.actionFragmentHistoryToFragmentHistoryDetails(
                 date = HistoryItemAdapter.parseHistoryItemDate(item.date),
-                value = item.value
+                value = item.total().toFloat()
             )
             findNavController().navigate(action)
         }
@@ -60,13 +56,13 @@ class HistoryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
-        viewModel.currentCarbonReduction.observe(viewLifecycleOwner, { data ->
-            currentCarbonReductionTextView.text = String.format("%.1fg", data)
-        })
-        viewModel.historyData.observe(viewLifecycleOwner, { data ->
+        carbonDataViewModel = ViewModelProvider(this)[CarbonDataViewModel::class.java]
+        carbonDataViewModel.currentDateCarbonData.observe(viewLifecycleOwner) {
+                carbonData -> currentCarbonReductionTextView.text = getString(R.string.history_carbon_view_center_format, carbonData.total())
+        }
+        carbonDataViewModel.dailyCarbonDataHistory.observe(viewLifecycleOwner) { data ->
             historyAdapter.updateData(data)
-        })
+        }
     }
 
     override fun onResume() {

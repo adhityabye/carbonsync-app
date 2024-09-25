@@ -10,11 +10,14 @@
 
     <!-- Home Fragment -->
     <string name="home_carbon_view_top">You\'ve reduced</string>
+    <string name="home_carbon_view_center_format">%.1fg</string>
     <string name="home_carbon_view_bottom">of carbon emission</string>
+    <string name="home_community_button_label">Community</string>
 
     <!-- History Fragment -->
     <string name="title_history">History</string>
     <string name="history_carbon_view_top">Today\' carbon emission reduction</string>
+    <string name="history_carbon_view_center_format">%.1fg</string>
 
     <!-- Preference Titles -->
     <string name="general_header">General</string>
@@ -30,4 +33,13 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_community">CommunityActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

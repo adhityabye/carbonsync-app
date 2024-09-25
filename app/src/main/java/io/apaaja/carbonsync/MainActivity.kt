@@ -2,6 +2,7 @@ package io.apaaja.carbonsync
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import io.apaaja.carbonsync.databinding.ActivityMainBinding
+import android.content.Intent
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,5 +63,10 @@ class MainActivity : AppCompatActivity() {
             "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             "system" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
+    }
+
+    public fun openCommunityActivity(view: View) {
+        val intent = Intent(this, CommunityActivity::class.java)
+        startActivity(intent)
     }
 }
