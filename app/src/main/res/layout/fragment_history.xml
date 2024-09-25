@@ -53,7 +53,7 @@
         android:textColor="@color/purple_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_carbon_view_top"
+        app:layout_constraintTop_toBottomOf="@+id/mock_data_button"
         tools:text="@string/title_history" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -65,6 +65,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/mock_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change to Mock Data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_carbon_view_top" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,6 +34,10 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_community">CommunityActivity</string>
+
+    <!-- Community Main Page -->
+    <string name="community_back_to_main_label">Back to CarbonSync</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

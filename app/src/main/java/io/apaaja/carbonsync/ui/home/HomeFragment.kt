@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import io.apaaja.carbonsync.MainActivity
@@ -27,18 +26,19 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        carbonDataViewModel = ViewModelProvider(requireActivity())[CarbonDataViewModel::class.java]
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        carbonDataViewModel = ViewModelProvider(requireActivity())[CarbonDataViewModel::class.java]
 
         setupObservers()
 
         // make it clickable
         binding.layoutCarbonViewTop.setOnClickListener(getCarbonReductionLayoutOnClickListener())
         binding.communityButton.setOnClickListener(View.OnClickListener { (activity as MainActivity).openCommunityActivity(requireView()); })
-
-        return root
     }
 
     override fun onDestroyView() {

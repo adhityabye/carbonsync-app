@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun openCommunityActivity(view: View) {
+    fun openCommunityActivity(view: View) {
         val intent = Intent(this, CommunityActivity::class.java)
         startActivity(intent)
     }

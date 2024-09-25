@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -43,6 +44,9 @@ class HistoryFragment : Fragment() {
         recyclerView = view.findViewById(R.id.history_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        val mockDataButton: Button = view.findViewById(R.id.mock_data_button)
+        mockDataButton.setOnClickListener(View.OnClickListener { carbonDataViewModel.useRandomData() })
+
         historyAdapter = HistoryItemAdapter() { item ->
             val action = HistoryFragmentDirections.actionFragmentHistoryToFragmentHistoryDetails(
                 date = HistoryItemAdapter.parseHistoryItemDate(item.date),
@@ -56,7 +60,7 @@ class HistoryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        carbonDataViewModel = ViewModelProvider(this)[CarbonDataViewModel::class.java]
+        carbonDataViewModel = ViewModelProvider(requireActivity())[CarbonDataViewModel::class.java]
         carbonDataViewModel.currentDateCarbonData.observe(viewLifecycleOwner) {
                 carbonData -> currentCarbonReductionTextView.text = getString(R.string.history_carbon_view_center_format, carbonData.total())
         }
