@@ -10,8 +10,10 @@
 
     <!-- Home Fragment -->
     <string name="home_carbon_view_top">You\'ve reduced</string>
-    <string name="home_carbon_view_center_format">%.1fg</string>
+    <string name="home_carbon_view_format">%.1fg</string>
     <string name="home_carbon_view_bottom">of carbon emission</string>
+    <string name="home_activity_screen_time_view_format">%dh %dm</string>
+    <string name="home_activity_achievements_view_format">%d/%d</string>
     <string name="home_community_button_label">Community</string>
 
     <!-- History Fragment -->
