@@ -15,9 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.apaaja.carbonsync.MainActivity
 import io.apaaja.carbonsync.R
+import io.apaaja.carbonsync.utils.converter.LocalDateConverter
 import io.apaaja.carbonsync.utils.formatter.IntegerNumberFormatter
 import io.apaaja.carbonsync.viewmodel.CarbonDataViewModel
-import java.time.LocalDate
 import java.util.*
 
 class HistoryFragment : Fragment() {
@@ -41,7 +41,7 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        currentCarbonReductionTextView = view.findViewById(R.id.textview_carbon_view_center)
+        currentCarbonReductionTextView = view.findViewById(R.id.textview_carbon_view_value)
         recyclerView = view.findViewById(R.id.history_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
@@ -49,11 +49,12 @@ class HistoryFragment : Fragment() {
         mockDataButton.setOnClickListener { carbonDataViewModel.randomizeData() }
 
         historyAdapter = HistoryItemAdapter { item ->
-            val action = HistoryFragmentDirections.actionFragmentHistoryToFragmentHistoryDetails(
-                date = HistoryItemAdapter.parseHistoryItemDate(item.first),
-                value = item.second
-            )
-            findNavController().navigate(action)
+            val action = LocalDateConverter.fromLocalDate(item.first)?.let {
+                HistoryFragmentDirections.actionFragmentHistoryToFragmentHistoryDetails(
+                    date = it
+                )
+            }
+            if (action != null) findNavController().navigate(action)
         }
 
         recyclerView.adapter = historyAdapter

@@ -53,8 +53,5 @@
         <argument
             android:name="date"
             app:argType="string" />
-        <argument
-            android:name="value"
-            app:argType="integer" />
     </fragment>
 </navigation>

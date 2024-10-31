@@ -19,6 +19,7 @@ import kotlin.random.Random.Default.nextLong
 
 class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : ViewModel() {
     private val _activities = MutableLiveData<List<CarbonReductionActivity>>(emptyList())
+    val activities: LiveData<List<CarbonReductionActivity>> = _activities
 
     private val _currentDayTotalCarbonReduction = MutableLiveData(0)
     val currentDayTotalCarbonReduction: LiveData<Int> get() = _currentDayTotalCarbonReduction
@@ -69,6 +70,15 @@ class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : 
 
             _historicalTotalCarbonReduction.value = historicalTotals
         }
+    }
+
+    fun getTotalForDate(date: LocalDate): Int {
+        _activities.value?.let { activities ->
+            return activities
+                .filter { it.parsedDate == date }
+                .sumOf { it.getCarbonReduction() }
+        }
+        return 0
     }
 
     fun randomizeData() {

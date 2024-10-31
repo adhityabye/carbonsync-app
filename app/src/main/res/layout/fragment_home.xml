@@ -100,7 +100,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
                         android:gravity="center"
-                        android:text="@string/home_initial_carbon_view"
+                        android:text="@string/initial_carbon_view"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </RelativeLayout>
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center"
-                    android:text="@string/home_initial_activity_screen_time_view"
+                    android:text="@string/initial_activity_screen_time_view"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 

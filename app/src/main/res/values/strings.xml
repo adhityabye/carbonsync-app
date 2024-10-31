@@ -8,6 +8,10 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_settings">Settings</string>
 
+    <!-- Global Scope Initial Values -->
+    <string name="initial_carbon_view">0g</string>
+    <string name="initial_activity_screen_time_view">0h 0m</string>
+
     <!-- Home Fragment -->
     <string name="home_greeting_view_top">Hello,</string>
     <string name="home_carbon_view_top">Carbon Reduction</string>
@@ -22,8 +26,6 @@
     <string name="home_community_button_label">Community</string>
 
     <string name="home_initial_greeting_view_bottom">User</string>
-    <string name="home_initial_carbon_view">0g</string>
-    <string name="home_initial_activity_screen_time_view">0h 0m</string>
     <string name="home_initial_activity_battery_level_view">100%</string>
     <string name="home_initial_achievements_view">0/0</string>
 
@@ -31,6 +33,12 @@
     <string name="title_history">History</string>
     <string name="history_carbon_view_top">Today\' carbon emission reduction</string>
     <string name="history_carbon_view_center_format">%.1fg</string>
+
+    <!-- History Details Fragment -->
+    <string name="title_history_details">History Details</string>
+    <string name="history_details_initial_date_view">Thu, 31 Oct 2024</string>
+    <string name="history_details_initial_carbon_view">0g</string>
+
 
     <!-- Preference Titles -->
     <string name="general_header">General</string>
