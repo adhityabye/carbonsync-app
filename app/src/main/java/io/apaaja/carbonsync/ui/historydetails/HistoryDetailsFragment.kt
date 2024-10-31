@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import io.apaaja.carbonsync.R
 import io.apaaja.carbonsync.databinding.FragmentDashboardBinding
 import io.apaaja.carbonsync.databinding.FragmentHistoryDetailsBinding
+import io.apaaja.carbonsync.utils.formatter.IntegerNumberFormatter
 
 class HistoryDetailsFragment : Fragment() {
 
@@ -40,10 +41,10 @@ class HistoryDetailsFragment : Fragment() {
 
         arguments?.let {
             val date = it.getString("date") ?: ""
-            val value = it.getFloat("value")
+            val value = it.getInt("value")
 
             binding.textviewCarbonViewTop.text = date
-            binding.textviewCarbonViewCenter.text = String.format("%.1fg", value)
+            binding.textviewCarbonViewCenter.text = IntegerNumberFormatter.condense(value)
         }
     }
 

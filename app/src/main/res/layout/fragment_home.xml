@@ -7,66 +7,6 @@
     android:layout_margin="32dp"
     tools:context=".ui.home.HomeFragment">
 
-
-    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--        android:id="@+id/layout_carbon_view_top"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="?android:attr/selectableItemBackground"-->
-    <!--        android:paddingTop="16dp"-->
-    <!--        android:paddingBottom="16dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent">-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/textview_carbon_view_top"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:gravity="center"-->
-    <!--            android:text="@string/home_carbon_view_top"-->
-    <!--            android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
-    <!--            android:textColor="@color/purple_500"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent"-->
-    <!--            />-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/textview_carbon_view_center"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:gravity="center"-->
-    <!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-    <!--            android:textColor="@color/purple_500"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/textview_carbon_view_top" />-->
-
-    <!--        <TextView-->
-    <!--            android:id="@+id/textview_carbon_view_bottom"-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:gravity="center"-->
-    <!--            android:text="@string/home_carbon_view_bottom"-->
-    <!--            android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
-    <!--            android:textColor="@color/purple_500"-->
-    <!--            app:layout_constraintEnd_toEndOf="parent"-->
-    <!--            app:layout_constraintStart_toStartOf="parent"-->
-    <!--            app:layout_constraintTop_toBottomOf="@+id/textview_carbon_view_center"-->
-    <!--             />-->
-    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/community_button"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="@string/home_community_button_label"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/layout_carbon_view_top" />-->
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -80,15 +20,16 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello,"
+            android:text="@string/home_greeting_view_top"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/textview_display_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User"
+            android:text="@string/home_initial_greeting_view_bottom"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:fontFamily="sans-serif-medium"
             app:textAllCaps="false" />
 
     </LinearLayout>
@@ -112,8 +53,8 @@
             app:cardBackgroundColor="@color/tufts_blue"
             app:cardCornerRadius="12dp"
             app:strokeWidth="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/card3"
-            app:layout_constraintEnd_toStartOf="@+id/card2"
+            app:layout_constraintBottom_toTopOf="@+id/card_history"
+            app:layout_constraintEnd_toStartOf="@+id/card_activities"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_weight="1">
@@ -129,26 +70,46 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Carbon Reduction"
+                    android:text="@string/home_carbon_view_top"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium" />
 
-                <TextView
-                    android:id="@+id/textview_carbon_view"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:text="0g"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:layout_height="match_parent">
 
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/progress_carbon_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="75"
+                        app:indicatorColor="@color/white"
+                        app:indicatorSize="120dp"
+                        app:trackCornerRadius="5dp" />
+
+                    <TextView
+                        android:id="@+id/textview_carbon_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center"
+                        android:text="@string/home_initial_carbon_view"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Card 2: Activity -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card2"
+            android:id="@+id/card_activities"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="4dp"
@@ -156,7 +117,7 @@
             app:cardBackgroundColor="@color/coral"
             app:cardCornerRadius="12dp"
             app:strokeWidth="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/card4"
+            app:layout_constraintBottom_toTopOf="@+id/card_achievements"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/card_carbon_reduction"
             app:layout_constraintTop_toTopOf="parent"
@@ -171,16 +132,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Activity"
+                    android:text="@string/home_activity_view_top"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium" />
                 <TextView
                     android:id="@+id/textview_screen_time_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center"
-                    android:text="0h 0m"
+                    android:text="@string/home_initial_activity_screen_time_view"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -190,7 +152,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:text="100%"
+                    android:text="@string/home_initial_activity_battery_level_view"
                     android:textSize="20sp"/>
                 <!-- Add more elements like icon and text here -->
 
@@ -199,7 +161,7 @@
 
         <!-- Card 3: History -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card3"
+            android:id="@+id/card_history"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="4dp"
@@ -208,7 +170,7 @@
             app:cardCornerRadius="12dp"
             app:strokeWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/card4"
+            app:layout_constraintEnd_toStartOf="@+id/card_achievements"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_carbon_reduction"
             app:layout_constraintVertical_weight="1.5">
@@ -222,17 +184,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="History"
+                    android:text="@string/home_history_view_top"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
-                <!-- Add more elements like icon and text here -->
-
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Card 4: Achievements -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card4"
+            android:id="@+id/card_achievements"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="4dp"
@@ -242,8 +203,8 @@
             app:strokeWidth="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/card3"
-            app:layout_constraintTop_toBottomOf="@+id/card2"
+            app:layout_constraintStart_toEndOf="@+id/card_history"
+            app:layout_constraintTop_toBottomOf="@+id/card_activities"
             app:layout_constraintVertical_weight="1">
 
             <LinearLayout
@@ -255,16 +216,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="Achievements"
+                    android:text="@string/home_achievements_view_top"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium" />
                 <TextView
                     android:id="@+id/textview_achievements_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:gravity="center"
-                    android:text="0/0"
+                    android:text="@string/home_initial_achievements_view"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
                 <!-- Add more elements like icon and text here -->
@@ -273,134 +235,5 @@
         </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--    <LinearLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:baselineAligned="false"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/linearLayout">-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1.0"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1.5"-->
-<!--                app:cardBackgroundColor="@color/black"-->
-<!--                app:cardCornerRadius="12dp">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Carbon Reduction"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="14sp" />-->
-
-<!--                    &lt;!&ndash; Add more elements like icon and text here &ndash;&gt;-->
-
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1.0"-->
-<!--                app:cardBackgroundColor="@color/black"-->
-<!--                app:cardCornerRadius="12dp">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Carbon Reduction"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="14sp" />-->
-
-<!--                    &lt;!&ndash; Add more elements like icon and text here &ndash;&gt;-->
-
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1.0"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1.0"-->
-<!--                app:cardBackgroundColor="@color/black"-->
-<!--                app:cardCornerRadius="12dp">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Carbon Reduction"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="14sp" />-->
-
-<!--                    &lt;!&ndash; Add more elements like icon and text here &ndash;&gt;-->
-
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-
-<!--            <com.google.android.material.card.MaterialCardView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1.5"-->
-<!--                app:cardBackgroundColor="@color/black"-->
-<!--                app:cardCornerRadius="12dp">-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="vertical">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Carbon Reduction"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textSize="14sp" />-->
-
-<!--                    &lt;!&ndash; Add more elements like icon and text here &ndash;&gt;-->
-
-<!--                </LinearLayout>-->
-<!--            </com.google.android.material.card.MaterialCardView>-->
-<!--        </LinearLayout>-->
-
-<!--    </LinearLayout>-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

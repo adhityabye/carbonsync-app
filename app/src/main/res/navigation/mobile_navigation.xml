@@ -55,6 +55,6 @@
             app:argType="string" />
         <argument
             android:name="value"
-            app:argType="float" />
+            app:argType="integer" />
     </fragment>
 </navigation>

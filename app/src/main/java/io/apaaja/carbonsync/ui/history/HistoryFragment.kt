@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import io.apaaja.carbonsync.MainActivity
 import io.apaaja.carbonsync.R
+import io.apaaja.carbonsync.utils.formatter.IntegerNumberFormatter
 import io.apaaja.carbonsync.viewmodel.CarbonDataViewModel
 import java.time.LocalDate
 import java.util.*
@@ -45,12 +46,12 @@ class HistoryFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         val mockDataButton: Button = view.findViewById(R.id.mock_data_button)
-        mockDataButton.setOnClickListener(View.OnClickListener { carbonDataViewModel.useRandomData() })
+        mockDataButton.setOnClickListener { carbonDataViewModel.randomizeData() }
 
-        historyAdapter = HistoryItemAdapter() { item ->
+        historyAdapter = HistoryItemAdapter { item ->
             val action = HistoryFragmentDirections.actionFragmentHistoryToFragmentHistoryDetails(
-                date = HistoryItemAdapter.parseHistoryItemDate(item.date),
-                value = item.total().toFloat()
+                date = HistoryItemAdapter.parseHistoryItemDate(item.first),
+                value = item.second
             )
             findNavController().navigate(action)
         }
@@ -61,10 +62,10 @@ class HistoryFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         carbonDataViewModel = ViewModelProvider(requireActivity())[CarbonDataViewModel::class.java]
-        carbonDataViewModel.currentDateCarbonData.observe(viewLifecycleOwner) {
-                carbonData -> currentCarbonReductionTextView.text = getString(R.string.history_carbon_view_center_format, carbonData.total())
+        carbonDataViewModel.currentDayTotalCarbonReduction.observe(viewLifecycleOwner) {
+            carbonData -> currentCarbonReductionTextView.text = IntegerNumberFormatter.condense(carbonData)
         }
-        carbonDataViewModel.dailyCarbonDataHistory.observe(viewLifecycleOwner) { data ->
+        carbonDataViewModel.historicalTotalCarbonReduction.observe(viewLifecycleOwner) { data ->
             historyAdapter.updateData(data)
         }
     }

@@ -15,14 +15,22 @@ import androidx.preference.PreferenceManager
 import io.apaaja.carbonsync.databinding.ActivityMainBinding
 import android.content.Intent
 import androidx.navigation.NavController
+import androidx.room.Room
+import io.apaaja.carbonsync.database.AppDatabase
+import io.apaaja.carbonsync.repository.CarbonActivitiesRepository
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var repository: CarbonActivitiesRepository
+    private lateinit var database: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyThemeFromPreferences()
         super.onCreate(savedInstanceState)
+
+        database = AppDatabase.getDatabase(this)
+        repository = CarbonActivitiesRepository(database.userDao())
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -67,7 +75,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun bottomNavItemChangeListener(navView: BottomNavigationView, navController: NavController) {
+    private fun bottomNavItemChangeListener(
+        navView: BottomNavigationView,
+        navController: NavController
+    ) {
         navView.setOnItemSelectedListener { item ->
             navController.popBackStack(item.itemId, inclusive = true, saveState = false)
             navController.navigate(item.itemId)
@@ -78,5 +89,9 @@ class MainActivity : AppCompatActivity() {
     fun openCommunityActivity(view: View) {
         val intent = Intent(this, CommunityActivity::class.java)
         startActivity(intent)
+    }
+
+    fun getCarbonActivitiesRepository(): CarbonActivitiesRepository {
+        return repository
     }
 }
