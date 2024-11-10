@@ -14,6 +14,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
 import io.apaaja.carbonsync.databinding.ActivityMainBinding
 import android.content.Intent
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.NavController
 import androidx.room.Room
 import io.apaaja.carbonsync.database.AppDatabase
@@ -24,6 +26,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var repository: CarbonActivitiesRepository
     private lateinit var database: AppDatabase
+
+    private val mapsActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val totalDistance = result.data?.getFloatExtra("TOTAL_DISTANCE", 0f) ?: 0f
+            Toast.makeText(this, "Distance traveled: $totalDistance meters", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         applyThemeFromPreferences()
@@ -86,12 +97,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun openCommunityActivity(view: View) {
-        val intent = Intent(this, CommunityActivity::class.java)
-        startActivity(intent)
-    }
-
     fun getCarbonActivitiesRepository(): CarbonActivitiesRepository {
         return repository
+    }
+
+    fun startMapsActivity() {
+        val intent = Intent(this, MapsActivity::class.java)
+        mapsActivityLauncher.launch(intent)
     }
 }
