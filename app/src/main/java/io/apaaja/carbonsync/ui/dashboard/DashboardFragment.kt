@@ -41,7 +41,7 @@ class DashboardFragment : Fragment() {
 
         val gpsButton: Button = binding.gpsButton
         gpsButton.setOnClickListener(View.OnClickListener {
-            (activity as MainActivity).startMapsActivity()
+//            (activity as MainActivity).startMapsActivity()
         })
 
         return root

@@ -24,6 +24,7 @@ class MapsActivity : AppCompatActivity() {
     private var locationManager: LocationManager? = null
     private var previousLocation: Location? = null
     private var totalDistance = 0f
+    private var transportMode: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +38,8 @@ class MapsActivity : AppCompatActivity() {
         // Initial marker at default location
         val startPoint = GeoPoint(51.5, -0.09)
         map.controller.setCenter(startPoint)
+
+        transportMode = intent.getStringExtra("TRANSPORT_MODE")
 
         checkLocationPermissionAndSetup()
     }
@@ -120,6 +123,7 @@ class MapsActivity : AppCompatActivity() {
     private fun returnToMainActivity() {
         val intent = Intent()
         intent.putExtra("TOTAL_DISTANCE", totalDistance)
+        intent.putExtra("TRANSPORT_MODE", transportMode)
         setResult(RESULT_OK, intent)
         finish()
     }

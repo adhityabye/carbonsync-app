@@ -1,5 +1,6 @@
 package io.apaaja.carbonsync.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,7 +34,7 @@ class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : 
         loadAllActivities()
     }
 
-    private fun insertActivity(activity: CarbonReductionActivity) = viewModelScope.launch {
+    fun insertActivity(activity: CarbonReductionActivity) = viewModelScope.launch {
         repository.insertActivity(activity)
         loadAllActivities()
     }
@@ -45,6 +46,9 @@ class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : 
 
     private fun loadAllActivities() = viewModelScope.launch {
         _activities.value = repository.getAllActivities()
+        _activities.value?.forEach {
+            Log.d("CarbonDataViewModel", "Activity: $it")
+        }
         updateCarbonReductionValues()
     }
 

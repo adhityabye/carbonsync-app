@@ -62,7 +62,7 @@ class HistoryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        carbonDataViewModel = ViewModelProvider(requireActivity())[CarbonDataViewModel::class.java]
+        carbonDataViewModel = (requireActivity() as MainActivity).carbonDataViewModel
         carbonDataViewModel.currentDayTotalCarbonReduction.observe(viewLifecycleOwner) {
             carbonData -> currentCarbonReductionTextView.text = IntegerNumberFormatter.condense(carbonData)
         }

@@ -16,10 +16,17 @@ import io.apaaja.carbonsync.databinding.ActivityMainBinding
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.room.Room
+import io.apaaja.carbonsync.data.CarbonReductionActivity
+import io.apaaja.carbonsync.data.TravelActivitiesCarbonReduction
 import io.apaaja.carbonsync.database.AppDatabase
 import io.apaaja.carbonsync.repository.CarbonActivitiesRepository
+import io.apaaja.carbonsync.utils.converter.LocalDateConverter
+import io.apaaja.carbonsync.viewmodel.CarbonDataViewModel
+import io.apaaja.carbonsync.viewmodel.CarbonDataViewModelFactory
+import java.time.LocalDate
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,12 +34,24 @@ class MainActivity : AppCompatActivity() {
     private lateinit var repository: CarbonActivitiesRepository
     private lateinit var database: AppDatabase
 
+    lateinit var carbonDataViewModel: CarbonDataViewModel
+
     private val mapsActivityLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
             val totalDistance = result.data?.getFloatExtra("TOTAL_DISTANCE", 0f) ?: 0f
-            Toast.makeText(this, "Distance traveled: $totalDistance meters", Toast.LENGTH_SHORT).show()
+            val selectedTransportMode = result.data?.getStringExtra("TRANSPORT_MODE") ?: "Car"
+
+            val activityName = String.format("TravelBy%s", selectedTransportMode.replace(" ", ""))
+
+            val transportActivity = CarbonReductionActivity(
+                date = LocalDateConverter.fromLocalDate(LocalDate.now()) ?: "",
+                activity = activityName,
+                value = totalDistance.toInt()
+            )
+
+            carbonDataViewModel.insertActivity(transportActivity)
         }
     }
 
@@ -42,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         database = AppDatabase.getDatabase(this)
         repository = CarbonActivitiesRepository(database.userDao())
+        carbonDataViewModel = ViewModelProvider(this, CarbonDataViewModelFactory(repository))[CarbonDataViewModel::class.java]
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -101,8 +121,11 @@ class MainActivity : AppCompatActivity() {
         return repository
     }
 
-    fun startMapsActivity() {
-        val intent = Intent(this, MapsActivity::class.java)
+    fun getIntentForMapsActivity(): Intent {
+        return Intent(this, MapsActivity::class.java)
+    }
+
+    fun startMapsActivity(intent: Intent) {
         mapsActivityLauncher.launch(intent)
     }
 }

@@ -39,6 +39,13 @@
     <string name="history_details_initial_date_view">Thu, 31 Oct 2024</string>
     <string name="history_details_initial_carbon_view">0g</string>
 
+    <!-- Add Activity Fragment -->
+    <string name="add_activity_daily_cto">Today, I did</string>
+    <string name="add_activity_daily_dropdown_label">Select Activity</string>
+    <string name="add_activity_daily_button">Add Activity</string>
+    <string name="add_activity_transport_cto">Today, I\'m using a</string>
+    <string name="add_activity_transport_dropdown_label">Select Transportation Mode</string>
+    <string name="add_activity_transport_button">Start Transport</string>
 
     <!-- Preference Titles -->
     <string name="general_header">General</string>
