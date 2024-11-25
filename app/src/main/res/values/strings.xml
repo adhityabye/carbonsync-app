@@ -1,6 +1,80 @@
 <resources>
     <string name="app_name">CarbonSync</string>
+
+    <!-- Navigation Titles -->
     <string name="title_home">Home</string>
+    <string name="title_add_activity">Add Activity</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Global Scope Initial Values -->
+    <string name="initial_carbon_view">0g</string>
+    <string name="initial_activity_screen_time_view">0h 0m</string>
+
+    <!-- Home Fragment -->
+    <string name="home_greeting_view_top">Hello,</string>
+    <string name="home_carbon_view_top">Carbon Reduction</string>
+    <string name="home_carbon_view_format">%.1fg</string>
+    <string name="home_carbon_view_bottom">of carbon emission</string>
+    <string name="home_activity_view_top">Activities</string>
+    <string name="home_activity_screen_time_view_format">%dh %dm</string>
+    <string name="home_activity_battery_level_view_format">%d%%</string>
+    <string name="home_history_view_top">History</string>
+    <string name="home_achievements_view_top">Achievements</string>
+    <string name="home_achievements_view_format">%d/%d</string>
+    <string name="home_community_button_label">Community</string>
+
+    <string name="home_initial_greeting_view_bottom">User</string>
+    <string name="home_initial_activity_battery_level_view">100%</string>
+    <string name="home_initial_achievements_view">0/0</string>
+
+    <!-- History Fragment -->
+    <string name="title_history">History</string>
+    <string name="history_carbon_view_top">Today\' carbon emission reduction</string>
+    <string name="history_carbon_view_center_format">%.1fg</string>
+
+    <!-- History Details Fragment -->
+    <string name="title_history_details">History Details</string>
+    <string name="history_details_initial_date_view">Thu, 31 Oct 2024</string>
+    <string name="history_details_initial_carbon_view">0g</string>
+
+    <!-- Add Activity Fragment -->
+    <string name="add_activity_daily_cto">Today, I did</string>
+    <string name="add_activity_daily_dropdown_label">Select Activity</string>
+    <string name="add_activity_daily_button">Add Activity</string>
+    <string name="add_activity_transport_cto">Today, I\'m using a</string>
+    <string name="add_activity_transport_dropdown_label">Select Transportation Mode</string>
+    <string name="add_activity_transport_button">Start Transport</string>
+
+    <!-- Preference Titles -->
+    <string name="general_header">General</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- General Preferences -->
+    <string name="theme_title">Theme</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_community">CommunityActivity</string>
+
+    <!-- Community Main Page -->
+    <string name="community_back_to_main_label">Back to CarbonSync</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

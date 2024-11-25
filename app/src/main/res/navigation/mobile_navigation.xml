@@ -8,18 +8,59 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="io.apaaja.carbonsync.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_fragment_history"
+            app:destination="@id/fragment_history" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="io.apaaja.carbonsync.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_add_activity"
+        android:name="io.apaaja.carbonsync.ui.addactivity.AddActivityFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_add_activity" >
+        <action
+            android:id="@+id/action_navigation_add_activity_to_navigation_add_transportation_activity"
+            app:destination="@id/navigation_add_transportation_activity" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_add_transportation_activity"
+        android:name="io.apaaja.carbonsync.ui.addtransportationactivity.AddTransportationActivityFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_add_transportation_activity" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="io.apaaja.carbonsync.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="io.apaaja.carbonsync.ui.settings.SettingsFragment"
+        android:label="@string/app_name" />
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="io.apaaja.carbonsync.ui.community.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
+    <fragment
+        android:id="@+id/fragment_history"
+        android:name="io.apaaja.carbonsync.ui.history.HistoryFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_fragment_history_to_fragment_history_details"
+            app:destination="@id/fragment_history_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_history_details"
+        android:name="io.apaaja.carbonsync.ui.historydetails.HistoryDetailsFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_history_details">
+        <argument
+            android:name="date"
+            app:argType="string" />
+    </fragment>
 </navigation>
