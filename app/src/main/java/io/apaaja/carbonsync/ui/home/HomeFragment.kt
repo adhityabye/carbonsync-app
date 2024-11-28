@@ -97,14 +97,6 @@ class HomeFragment : Fragment() {
                     (screenTime / (1000 * 60)) % 60
                 )
         }
-        homeViewModel.achievements.observe(viewLifecycleOwner) { achievements ->
-            binding.textviewAchievementsView.text =
-                getString(
-                    R.string.home_achievements_view_format,
-                    achievements.first,
-                    achievements.second
-                )
-        }
         homeViewModel.batteryLevel.observe(viewLifecycleOwner) { batteryLevel ->
             binding.textviewBatteryView.text =
                 getString(R.string.home_activity_battery_level_view_format, batteryLevel)
