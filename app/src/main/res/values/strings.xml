@@ -20,6 +20,7 @@
     <string name="home_activity_view_top">Activities</string>
     <string name="home_activity_screen_time_view_format">%dh %dm</string>
     <string name="home_activity_battery_level_view_format">%d%%</string>
+    <string name="home_activity_battery_level_view_label">Battery</string>
     <string name="home_history_view_top">History</string>
     <string name="home_achievements_view_top">Achievements</string>
     <string name="home_achievements_view_format">%d/%d</string>

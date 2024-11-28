@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/drawable/battery_progress_bar.xml" value="0.2526041666666667" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/drawable/ic_chevron_left_24dp.xml" value="0.2526041666666667" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2526041666666667" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/drawable/ic_gear_24dp.xml" value="0.2526041666666667" />
@@ -22,7 +23,7 @@
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_first.xml" value="0.23645833333333333" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_history.xml" value="0.264" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_history_details.xml" value="0.4" />
-        <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_home.xml" value="0.34183673469387754" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_notifications.xml" value="0.23645833333333333" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
         <entry key="..\:/Archy/aaaaaaaaaaaaaaa/PAPB/carbonsync-app/app/src/main/res/layout/item_daily_activity.xml" value="0.23645833333333333" />

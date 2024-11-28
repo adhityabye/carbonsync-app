@@ -108,6 +108,7 @@ class HomeFragment : Fragment() {
         homeViewModel.batteryLevel.observe(viewLifecycleOwner) { batteryLevel ->
             binding.textviewBatteryView.text =
                 getString(R.string.home_activity_battery_level_view_format, batteryLevel)
+            binding.batteryProgress.progress = batteryLevel
         }
 
         MediatorLiveData<Pair<Int?, Int?>>().apply {
