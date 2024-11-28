@@ -5,11 +5,12 @@ enum class TravelActivitiesCarbonReduction(val carbonReductionPerKilometer: Int)
     TravelByMotorbike(57),
     TravelByBus(74),
     TravelByElectricCar(124),
-    TravelByTrain(136);
+    TravelByTrain(136),
+    TravelByWalking(155);
 
     companion object {
         fun listString(): List<String> {
-            return listOf("Car", "Motorbike", "Bus", "Electric Car", "Train")
+            return listOf("Car", "Motorbike", "Bus", "Electric Car", "Train", "Walking")
         }
 
         fun fromString(value: String): TravelActivitiesCarbonReduction? {
@@ -19,6 +20,7 @@ enum class TravelActivitiesCarbonReduction(val carbonReductionPerKilometer: Int)
                 "Bus" -> TravelByBus
                 "Electric Car" -> TravelByElectricCar
                 "Train" -> TravelByTrain
+                "Walking" -> TravelByWalking
                 else -> null
             }
         }

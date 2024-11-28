@@ -23,7 +23,15 @@
         <action
             android:id="@+id/action_navigation_add_activity_to_navigation_add_transportation_activity"
             app:destination="@id/navigation_add_transportation_activity" />
+        <action
+            android:id="@+id/action_navigation_add_activity_to_navigation_add_daily_activity"
+            app:destination="@id/navigation_add_daily_activity" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_add_daily_activity"
+        android:name="io.apaaja.carbonsync.ui.adddailyactivity.AddDailyActivityFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_add_daily_activity" />
     <fragment
         android:id="@+id/navigation_add_transportation_activity"
         android:name="io.apaaja.carbonsync.ui.addtransportationactivity.AddTransportationActivityFragment"
