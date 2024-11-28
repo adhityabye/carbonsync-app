@@ -225,7 +225,15 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="32dp"
+                    android:src="@drawable/ic__26655_history_icon_1"
+                    android:contentDescription="@string/home_history_view_top" />
             </LinearLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Card 4: Achievements -->
@@ -257,15 +265,12 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium" />
-                <TextView
-                    android:id="@+id/textview_achievements_view"
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:text="@string/home_initial_achievements_view"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:layout_height="match_parent"
+                    android:layout_margin="32dp"
+                    android:src="@drawable/ic_medal_svgrepo_com_1"
+                    android:contentDescription="@string/home_achievements_view_top" />
                 <!-- Add more elements like icon and text here -->
 
             </LinearLayout>
