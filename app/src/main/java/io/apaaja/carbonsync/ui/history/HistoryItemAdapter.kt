@@ -8,6 +8,8 @@ import io.apaaja.carbonsync.R
 import io.apaaja.carbonsync.utils.formatter.IntegerNumberFormatter
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
 
 class HistoryItemAdapter(
     private val onItemClick: (Pair<LocalDate, Int>) -> Unit
@@ -29,7 +31,9 @@ class HistoryItemAdapter(
 
     override fun onBindViewHolder(holder: HistoryItemViewHolder, position: Int) {
         val currentItem = historyList[position]
-        holder.dateView.text = dateFormat.format(currentItem.first)
+        holder.dateView.text = currentItem.first.dayOfMonth.toString()
+        holder.monthView.text = currentItem.first.month.getDisplayName(TextStyle.SHORT, Locale.US)
+        holder.dayView.text = currentItem.first.dayOfWeek.getDisplayName(TextStyle.FULL, Locale.US)
         holder.valueView.text = IntegerNumberFormatter.condense(currentItem.second)
         holder.itemView.setOnClickListener { onItemClick(currentItem) }
     }

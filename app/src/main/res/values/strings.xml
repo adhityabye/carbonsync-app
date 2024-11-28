@@ -38,6 +38,8 @@
     <string name="title_history_details">History Details</string>
     <string name="history_details_initial_date_view">Thu, 31 Oct 2024</string>
     <string name="history_details_initial_carbon_view">0g</string>
+    <string name="history_details_screen_time_title">Total Screen Time</string>
+    <string name="history_details_activities_title">Today\'s Activities</string>
 
     <!-- Add Activity Fragment -->
     <string name="add_activity_label_daily">Daily\nActivities</string>
