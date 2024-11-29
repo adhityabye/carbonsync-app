@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_fragment_history"
             app:destination="@id/fragment_history" />
+        <action
+            android:id="@+id/action_navigation_home_to_fragment_history_details"
+            app:destination="@id/fragment_history_details" />
     </fragment>
 
     <fragment

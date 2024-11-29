@@ -27,6 +27,7 @@ import io.apaaja.carbonsync.ui.dashboard.DashboardViewModel
 import io.apaaja.carbonsync.utils.formatter.IntegerNumberFormatter
 import io.apaaja.carbonsync.viewmodel.CarbonDataViewModel
 import io.apaaja.carbonsync.viewmodel.CarbonDataViewModelFactory
+import java.time.LocalDate
 
 class HomeFragment : Fragment() {
 
@@ -66,8 +67,16 @@ class HomeFragment : Fragment() {
         val historyCard: MaterialCardView = view.findViewById(R.id.card_history)
         val achievementsCard: MaterialCardView = view.findViewById(R.id.card_achievements)
 
-        carbonReductionCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
-        activitiesCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
+        carbonReductionCard.setOnClickListener {
+            val currentDate = LocalDate.now().toString() // Get current date in ISO-8601 format
+            val action =
+                HomeFragmentDirections.actionNavigationHomeToFragmentHistoryDetails(date = currentDate)
+            findNavController().navigate(action)
+        }
+        historyCard.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_fragment_history)
+        }
+        // activitiesCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
 
         startEntryAnimation(carbonReductionCard, activitiesCard, historyCard, achievementsCard)
     }
