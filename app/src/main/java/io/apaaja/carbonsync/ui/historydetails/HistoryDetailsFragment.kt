@@ -69,6 +69,7 @@ class HistoryDetailsFragment : Fragment() {
             }
         }.observe(viewLifecycleOwner) { (date, carbonTotal, dailyCarbonTarget) ->
             binding.textviewCarbonViewDate.text = dateFormat.format(date)
+            binding.textviewCarbonViewTargetValue.text = IntegerNumberFormatter.condense(dailyCarbonTarget ?: 0)
             binding.screenTimeSection.visibility = if (date == LocalDate.now()) View.VISIBLE else View.INVISIBLE
             binding.textviewCarbonViewValue.text = IntegerNumberFormatter.condense(carbonTotal)
             binding.progressCarbonView.progress = if (dailyCarbonTarget != null) carbonTotal * 100 / dailyCarbonTarget else 0
