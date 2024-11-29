@@ -42,6 +42,12 @@
     <string name="history_details_screen_time_title">Total Screen Time</string>
     <string name="history_details_activities_title">Today\'s Activities</string>
 
+    <!-- Achievements Fragment -->
+    <string name="title_achievements">Achievements</string>
+    <string name="achievements_total_label">Total Carbon Reduction</string>
+    <string name="achievements_highest_label">Highest Carbon Reduction</string>
+    <string name="achievements_progress_format">%s/%s</string>
+
     <!-- Add Activity Fragment -->
     <string name="add_activity_label_daily">Daily\nActivities</string>
     <string name="add_activity_content_description_daily">Daily Activities</string>

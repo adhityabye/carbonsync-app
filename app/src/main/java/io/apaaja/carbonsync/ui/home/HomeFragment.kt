@@ -76,6 +76,9 @@ class HomeFragment : Fragment() {
         historyCard.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_fragment_history)
         }
+        achievementsCard.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_achievementFragment)
+        }
         // activitiesCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
 
         startEntryAnimation(carbonReductionCard, activitiesCard, historyCard, achievementsCard)
