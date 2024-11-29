@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.room.Room
 import io.apaaja.carbonsync.data.CarbonReductionActivity
+import io.apaaja.carbonsync.data.DailyActivitiesCarbonReduction
 import io.apaaja.carbonsync.data.TravelActivitiesCarbonReduction
 import io.apaaja.carbonsync.database.AppDatabase
 import io.apaaja.carbonsync.repository.CarbonActivitiesRepository
@@ -116,6 +117,17 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+
+    fun addDailyActivityData(dailyActivity: DailyActivitiesCarbonReduction) {
+        val carbonReductionActivity = CarbonReductionActivity(
+            date = LocalDateConverter.fromLocalDate(LocalDate.now()) ?: "",
+            activity = dailyActivity.toString(),
+            value = 1
+        )
+
+        carbonDataViewModel.insertActivity(carbonReductionActivity)
+    }
+
 
     fun getCarbonActivitiesRepository(): CarbonActivitiesRepository {
         return repository

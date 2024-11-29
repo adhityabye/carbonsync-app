@@ -20,6 +20,7 @@
     <string name="home_activity_view_top">Activities</string>
     <string name="home_activity_screen_time_view_format">%dh %dm</string>
     <string name="home_activity_battery_level_view_format">%d%%</string>
+    <string name="home_activity_battery_level_view_label">Battery</string>
     <string name="home_history_view_top">History</string>
     <string name="home_achievements_view_top">Achievements</string>
     <string name="home_achievements_view_format">%d/%d</string>
@@ -38,11 +39,27 @@
     <string name="title_history_details">History Details</string>
     <string name="history_details_initial_date_view">Thu, 31 Oct 2024</string>
     <string name="history_details_initial_carbon_view">0g</string>
+    <string name="history_details_screen_time_title">Total Screen Time</string>
+    <string name="history_details_activities_title">Today\'s Activities</string>
+
+    <!-- Achievements Fragment -->
+    <string name="title_achievements">Achievements</string>
+    <string name="achievements_total_label">Total Carbon Reduction</string>
+    <string name="achievements_highest_label">Highest Carbon Reduction</string>
+    <string name="achievements_progress_format">%s/%s</string>
 
     <!-- Add Activity Fragment -->
+    <string name="add_activity_label_daily">Daily\nActivities</string>
+    <string name="add_activity_content_description_daily">Daily Activities</string>
+    <string name="add_activity_label_transport">Transportation</string>
+    <string name="add_activity_content_description_transport">Transportation</string>
+
+    <!-- Add Daily Activity Fragment -->
     <string name="add_activity_daily_cto">Today, I did</string>
     <string name="add_activity_daily_dropdown_label">Select Activity</string>
     <string name="add_activity_daily_button">Add Activity</string>
+
+    <!-- Add Transport Activity Fragment -->
     <string name="add_activity_transport_cto">Today, I\'m using a</string>
     <string name="add_activity_transport_dropdown_label">Select Transportation Mode</string>
     <string name="add_activity_transport_button">Start Transport</string>

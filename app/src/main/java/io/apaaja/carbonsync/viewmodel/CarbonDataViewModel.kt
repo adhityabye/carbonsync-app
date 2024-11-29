@@ -28,6 +28,12 @@ class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : 
     private val _historicalTotalCarbonReduction = MutableLiveData<List<Pair<LocalDate, Int>>>()
     val historicalTotalCarbonReduction: LiveData<List<Pair<LocalDate, Int>>> get() = _historicalTotalCarbonReduction
 
+    private val _totalData = MutableLiveData<Int>()
+    val totalData: LiveData<Int> get() = _totalData
+
+    private val _highestDailyReduction = MutableLiveData<Int>()
+    val highestDailyReduction: LiveData<Int> get() = _highestDailyReduction
+
     val dailyCarbonTarget: LiveData<Int> = MutableLiveData(5500)
 
     init {
@@ -46,10 +52,9 @@ class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : 
 
     private fun loadAllActivities() = viewModelScope.launch {
         _activities.value = repository.getAllActivities()
-        _activities.value?.forEach {
-            Log.d("CarbonDataViewModel", "Activity: $it")
-        }
         updateCarbonReductionValues()
+        updateCarbonReductionTotal()
+        updateHighestDailyReduction()
     }
 
     private fun updateCarbonReductionValues() {
@@ -74,6 +79,27 @@ class CarbonDataViewModel(private val repository: CarbonActivitiesRepository) : 
 
             _historicalTotalCarbonReduction.value = historicalTotals
         }
+    }
+
+    private fun updateCarbonReductionTotal() {
+        _activities.value?.let { activities ->
+            _totalData.value = activities.sumOf { it.getCarbonReduction() }
+        }
+    }
+
+    private fun updateHighestDailyReduction() {
+        _historicalTotalCarbonReduction.value?.let { historicalData ->
+            val highest = historicalData.maxOfOrNull { it.second } ?: 0
+            _highestDailyReduction.value = highest
+        }
+    }
+
+    fun getTotal(): Int {
+        _activities.value?.let { activities ->
+            return activities
+                .sumOf { it.getCarbonReduction() }
+        }
+        return 0
     }
 
     fun getTotalForDate(date: LocalDate): Int {

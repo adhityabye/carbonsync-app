@@ -27,6 +27,7 @@ import io.apaaja.carbonsync.ui.dashboard.DashboardViewModel
 import io.apaaja.carbonsync.utils.formatter.IntegerNumberFormatter
 import io.apaaja.carbonsync.viewmodel.CarbonDataViewModel
 import io.apaaja.carbonsync.viewmodel.CarbonDataViewModelFactory
+import java.time.LocalDate
 
 class HomeFragment : Fragment() {
 
@@ -66,8 +67,19 @@ class HomeFragment : Fragment() {
         val historyCard: MaterialCardView = view.findViewById(R.id.card_history)
         val achievementsCard: MaterialCardView = view.findViewById(R.id.card_achievements)
 
-        carbonReductionCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
-        activitiesCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
+        carbonReductionCard.setOnClickListener {
+            val currentDate = LocalDate.now().toString() // Get current date in ISO-8601 format
+            val action =
+                HomeFragmentDirections.actionNavigationHomeToFragmentHistoryDetails(date = currentDate)
+            findNavController().navigate(action)
+        }
+        historyCard.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_fragment_history)
+        }
+        achievementsCard.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_achievementFragment)
+        }
+        // activitiesCard.setOnClickListener(getCarbonReductionLayoutOnClickListener())
 
         startEntryAnimation(carbonReductionCard, activitiesCard, historyCard, achievementsCard)
     }
@@ -97,17 +109,10 @@ class HomeFragment : Fragment() {
                     (screenTime / (1000 * 60)) % 60
                 )
         }
-        homeViewModel.achievements.observe(viewLifecycleOwner) { achievements ->
-            binding.textviewAchievementsView.text =
-                getString(
-                    R.string.home_achievements_view_format,
-                    achievements.first,
-                    achievements.second
-                )
-        }
         homeViewModel.batteryLevel.observe(viewLifecycleOwner) { batteryLevel ->
             binding.textviewBatteryView.text =
                 getString(R.string.home_activity_battery_level_view_format, batteryLevel)
+            binding.batteryProgress.progress = batteryLevel
         }
 
         MediatorLiveData<Pair<Int?, Int?>>().apply {

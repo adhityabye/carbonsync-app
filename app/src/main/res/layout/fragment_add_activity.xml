@@ -12,21 +12,25 @@
         android:id="@+id/card_daily_activities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/tufts_blue"
         app:cardCornerRadius="12dp"
         app:strokeWidth="0dp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_daily_activities"
+                android:contentDescription="@string/add_activity_content_description_daily" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:text="Daily\nActivities"
+                android:textColor="@color/black"
+                android:gravity="end"
+                android:text="@string/add_activity_label_daily"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -36,21 +40,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/royal_purple"
         app:cardCornerRadius="12dp"
         app:strokeWidth="0dp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_transportation"
+                android:contentDescription="@string/add_activity_content_description_daily" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:text="Transportation"
+                android:textColor="@color/black"
+                android:gravity="start"
+                android:text="@string/add_activity_label_transport"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>

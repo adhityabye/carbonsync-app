@@ -147,14 +147,51 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/textview_battery_view"
+                    android:id="@+id/textview_battery_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:text="@string/home_activity_battery_level_view_label"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="@color/white" />
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:text="@string/home_initial_activity_battery_level_view"
-                    android:textSize="20sp"/>
-                <!-- Add more elements like icon and text here -->
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginRight="36dp"
+                    android:layout_marginBottom="48dp"
+                    android:layout_marginTop="0dp">
+                    <ProgressBar
+                        android:id="@+id/batteryProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:progressDrawable="@drawable/battery_progress_bar"
+                        android:max="100"
+                        android:progress="50"
+                        android:layout_gravity="center" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        app:cardCornerRadius="8dp">
+                        <TextView
+                            android:id="@+id/textview_battery_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:gravity="center"
+                            android:textColor="@color/coral"
+                            android:text="@string/home_initial_activity_battery_level_view"/>
+                    </androidx.cardview.widget.CardView>
+
+                </FrameLayout>
+
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -188,7 +225,15 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="32dp"
+                    android:src="@drawable/ic__26655_history_icon_1"
+                    android:contentDescription="@string/home_history_view_top" />
             </LinearLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Card 4: Achievements -->
@@ -220,15 +265,12 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium" />
-                <TextView
-                    android:id="@+id/textview_achievements_view"
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:text="@string/home_initial_achievements_view"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:layout_height="match_parent"
+                    android:layout_margin="32dp"
+                    android:src="@drawable/ic_medal_svgrepo_com_1"
+                    android:contentDescription="@string/home_achievements_view_top" />
                 <!-- Add more elements like icon and text here -->
 
             </LinearLayout>

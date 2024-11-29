@@ -42,7 +42,7 @@ class HistoryDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        historyDetailsViewModel = ViewModelProvider(this)[HistoryDetailsViewModel::class.java]
+        historyDetailsViewModel = ViewModelProvider(this, HistoryDetailsViewModelFactory(requireContext()))[HistoryDetailsViewModel::class.java]
         carbonDataViewModel = ViewModelProvider(
             requireActivity(),
             CarbonDataViewModelFactory((requireActivity() as MainActivity).getCarbonActivitiesRepository())
@@ -69,8 +69,17 @@ class HistoryDetailsFragment : Fragment() {
             }
         }.observe(viewLifecycleOwner) { (date, carbonTotal, dailyCarbonTarget) ->
             binding.textviewCarbonViewDate.text = dateFormat.format(date)
+            binding.screenTimeSection.visibility = if (date == LocalDate.now()) View.VISIBLE else View.INVISIBLE
             binding.textviewCarbonViewValue.text = IntegerNumberFormatter.condense(carbonTotal)
             binding.progressCarbonView.progress = if (dailyCarbonTarget != null) carbonTotal * 100 / dailyCarbonTarget else 0
+        }
+
+        historyDetailsViewModel.screenTime.observe(viewLifecycleOwner) { screenTime ->
+            binding.textviewScreenTimeView.text = getString(
+                R.string.home_activity_screen_time_view_format,
+                screenTime / (1000 * 60 * 60),
+                (screenTime / (1000 * 60)) % 60
+            )
         }
 
 //        historyDetailsViewModel.date.observe(viewLifecycleOwner) { date ->

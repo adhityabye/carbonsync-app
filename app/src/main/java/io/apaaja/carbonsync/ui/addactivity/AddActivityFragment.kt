@@ -23,6 +23,9 @@ class AddActivityFragment : Fragment() {
         val dailyActivitiesCard: MaterialCardView = view.findViewById(R.id.card_daily_activities)
         val transportationCard: MaterialCardView = view.findViewById(R.id.card_transportation)
 
+        dailyActivitiesCard.setOnClickListener(View.OnClickListener {
+            findNavController().navigate(R.id.action_navigation_add_activity_to_navigation_add_daily_activity)
+        })
         transportationCard.setOnClickListener(View.OnClickListener {
             findNavController().navigate(R.id.action_navigation_add_activity_to_navigation_add_transportation_activity)
         })
